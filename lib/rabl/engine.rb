@@ -106,6 +106,8 @@ module Rabl
     # Returns a json representation of the data object
     # to_json(:root => true)
     def to_json(options = {})
+      options = @_options.merge(options)
+      
       options = { :root => Rabl.configuration.include_json_root }.merge(options)
       result = to_dumpable(options)
       format_json(result)
